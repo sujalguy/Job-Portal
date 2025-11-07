@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Support Center</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin: 50px;
+            flex-wrap: wrap;
+        }
+        .option-box {
+            background-color: white;
+            width: 300px;
+            height: 300px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            cursor: pointer;
+        }
+        .option-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+        }
+        .option-box h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+        .option-box p {
+            margin: 10px 20px;
+            color: #666;
+        }
+        .option-box a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: 2px solid #007BFF;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .option-box a:hover {
+            background-color: #007BFF;
+            color: white;
+        }
+        @media (max-width: 700px) {
+            .container {
+                flex-direction: column;
+                gap: 20px;
+                margin: 20px;
+            }
+            .option-box {
+                width: 90%;
+                height: auto;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>Support Center</header>
+
+    <div class="container">
+        <div class="option-box">
+            <h2>Send Complaint Email</h2>
+            <p>If you have an issue or complaint, click below to send us an email. We are here to help!</p>
+            <a href="{% url 'email' %}">Go to Email Form</a>
+        </div>
+
+        <div class="option-box">
+            <h2>AI Chatbot</h2>
+            <p>Need quick assistance? Chat with our AI chatbot for instant help and guidance anytime.</p>
+            <a href="{% url 'AI'%}">Start Chatting</a>
+          
+        </div>
+    </div>
+</body>
+</html>

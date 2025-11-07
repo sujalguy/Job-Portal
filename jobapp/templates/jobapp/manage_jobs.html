@@ -1,0 +1,161 @@
+
+{% load static %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+   body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .navbar {
+      background-color: #333;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .navbar .logo {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .navbar a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      display: block;
+    }
+    .navbar a:hover {
+      background-color: #575757;
+      border-radius: 5px;
+    }
+    .nav-links {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="#" class="logo">Job-portal</a>
+    <div class="nav-links">
+      <a href="#">Jobs</a>
+      <a href="{% url 'about' %}">About</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+
+<div class="container my-5">
+  <h2 class="mb-4 text-primary fw-bold">📂 Manage Your Posted Jobs</h2>
+  <div class="card shadow mb-4">
+    <div class="card-header bg-info text-white fw-bold">💻 IT Jobs</div>
+    <div class="card-body">
+      {% if it_jobs %}
+        <table class="table table-striped table-hover align-middle">
+          <thead class="table-dark">
+            <tr>
+              <th>Title</th>
+              <th>Company</th>
+              <th>Location</th>
+              <th>Experience</th>
+              <th>Salary</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for job in it_jobs %}
+            <tr>
+              <td>{{ job.Job_title }}</td>
+              <td>{{ job.Company_name }}</td>
+              <td>{{ job.Job_location }}</td>
+              <td>{{job.job_Experience}}</td>
+              <td>{{job.job_Salary}}</td>
+              <td>
+                <a href="{% url 'update-it' job.id %}" class="btn btn-sm btn-warning">✏️ Edit</a>
+                <a href="{% url 'delete-it' job.id %}" class="btn btn-sm btn-danger">🗑 Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p class="text-muted">No IT jobs posted yet.</p>
+      {% endif %}
+    </div>
+  </div>
+  <div class="card shadow mb-4">
+    <div class="card-header bg-secondary text-white fw-bold">⚙️ Mechanical Jobs</div>
+    <div class="card-body">
+      {% if mech_jobs %}
+        <table class="table table-striped table-hover align-middle">
+          <thead class="table-dark">
+            <tr>
+              <th>Title</th>
+              <th>Company</th>
+              <th>Location</th>
+              <th>Experience</th>
+              <th>Salary</th>
+              <th>Actions</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for job in mech_jobs %}
+            <tr>
+              <td>{{ job.Job_title }}</td>
+              <td>{{ job.Company_name }}</td>
+              <td>{{ job.Job_location }}</td>
+              <td>{{ job.Experience}}</td>
+              <td>{{job.Salary}}</td>
+              <td>
+                <a href="{% url 'update-mech-jobs' job.id %}" class="btn btn-sm btn-warning">✏️ Edit</a>
+                <a href="{% url 'delete-mech-jobs' job.id %}" class="btn btn-sm btn-danger">🗑 Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p class="text-muted">No Mechanical jobs posted yet.</p>
+      {% endif %}
+    </div>
+  </div>
+  <div class="card shadow mb-4">
+    <div class="card-header bg-success text-white fw-bold">🏗 Civil Jobs</div>
+    <div class="card-body">
+      {% if civil_jobs %}
+        <table class="table table-striped table-hover align-middle">
+          <thead class="table-dark">
+            <tr>
+              <th>Title</th>
+              <th>Company</th>
+              <th>Location</th>
+              <th>Experience</th>
+              <th>Salary</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for job in civil_jobs %}
+            <tr>
+              <td>{{ job.Job_title }}</td>
+              <td>{{ job.Company_name }}</td>
+              <td>{{ job.Job_location }}</td>
+              <td>{{job.job_Experience}}</td>
+              <td>{{job.job_Salary}}</td>
+              <td>
+                <a href="{% url 'update-civil-jobs' job.id %}" class="btn btn-sm btn-warning">✏️ Edit</a>
+                <a href="{% url 'delete-civil-jobs' job.id %}" class="btn btn-sm btn-danger">🗑 Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p class="text-muted">No Civil jobs posted yet.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+

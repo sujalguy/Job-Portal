@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Job Portal - Home</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    .navbar {
+      background-color: #fff;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #2e8b57;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #555;
+      padding: 0.5rem 1rem;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .nav-links a:hover {
+      background-color: #2e8b57;
+      color: white;
+      border-radius: 5px;
+    }
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+      background: linear-gradient(135deg, #1e2a38, #2e3e50);
+      color: white;
+      text-align: left;
+      padding: 2rem;
+    }
+
+    .hero-content {
+      max-width: 600px;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background-color: #2e8b57;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #256f47;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .btn-outline:hover {
+      background-color: white;
+      color: #2e8b57;
+    }
+    .hero-image {
+      max-width: 500px;
+      margin-left: 3rem;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-image {
+        margin-left: 0;
+        margin-top: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="{% url 'home' %}" class="logo">JobApp</a>
+    <div class="nav-links">
+      <a href="#">Jobs</a>
+      <a href="{% url 'about' %}">About</a>
+      <a href="{% url 'contact'%}">Contact</a>
+    </div>
+  </nav>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Your Next Career Move Starts Here</h1>
+      <p>Find top job opportunities, connect with the best companies, and take the next step in your career journey with JobApp.</p>
+      <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+      <a href="{% url 'register' %}" class="btn btn-outline">Create Account</a>
+    </div>
+    <div class="hero-image">
+      <img src="https://media.istockphoto.com/id/1394701218/photo/job-search-concept-find-your-career-woman-looking-at-online-website-by-laptop-computer-people.jpg?s=612x612&w=0&k=20&c=V32cT3dAoI7plQSnV-i7YxP43YvaoyA0jLS4729gNWM=" alt="Job Search Illustration">
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Available IT Jobs</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f4f6f9;
+      color: #333;
+    }
+    .navbar {
+      background: #222;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 30px;
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+    }
+    .navbar .logo {
+      font-size: 22px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #fff;
+    }
+    .navbar .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+    .navbar .nav-links a:hover {
+      color: #ff9800;
+    }
+    h2 {
+      text-align: center;
+      margin: 30px 0;
+      font-size: 26px;
+      color: #444;
+    }
+    .jobs-container {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .job-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+    .job-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .job-card h3 {
+      margin-top: 0;
+      color: #222;
+      font-size: 20px;
+    }
+
+    .job-card p {
+      margin: 8px 0;
+      font-size: 14px;
+      line-height: 1.4;
+      color: #555;
+    }
+
+    .job-card b {
+      color: #333;
+    }
+    .apply-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background: #ff9800;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+    .apply-btn:hover {
+      background: #e68900;
+    }
+    .no-jobs {
+      text-align: center;
+      color: #666;
+      font-size: 18px;
+      margin: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="{% url 'home' %}" class="logo">JobApp</a>
+    <div class="nav-links">
+      <a href="#">Jobs</a>
+      <a href="{% url 'about' %}">About</a>
+      <a href="{% url 'contact' %}">Contact</a>
+      <a href="{% url 'logout' %}" style="color:#ff9800; font-weight:bold;">Logout</a>
+    </div>
+  </div>
+
+  <h2>Available IT Jobs</h2>
+
+  <div class="jobs-container">
+    {% for x in data %}
+    <div class="job-card">
+      <h3>{{x.Job_title}}</h3>
+      <p>{{x.Job_description}}</p>
+      <p><b>Company:</b> {{x.Company_name}}</p>
+      <p><b>Location:</b> {{x.Job_location}}</p>
+      <p><b>Experience:</b> {{x.Experience}} years</p>
+      <p><b>Salary:</b> ₹{{x.Salary}}</p>
+      <a href="{% url 'apply_job' 'it' x.id %}" class="apply-btn">Apply Now</a>
+    </div>
+    {% empty %}
+    <p class="no-jobs">🚀 No IT Jobs Available Right Now. Check back later!</p>
+    {% endfor %}
+  </div>
+
+</body>
+</html>

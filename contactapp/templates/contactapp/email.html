@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Email Complaint</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+        p {
+            text-align: center;
+            color: #555;
+            font-size: 1rem;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 150px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Email Complaint</h1>
+        <p>If you are facing any issues, problems, or have a complaint, please fill out this form. We will review your message and get back to you as soon as possible.</p>
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Send Complaint</button>
+        </form>
+    </div>
+
+</body>
+</html>
+

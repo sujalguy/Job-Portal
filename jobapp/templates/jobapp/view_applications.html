@@ -1,0 +1,84 @@
+
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .navbar {
+      background-color: #333;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .navbar .logo {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .navbar a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      display: block;
+    }
+    .navbar a:hover {
+      background-color: #575757;
+      border-radius: 5px;
+    }
+    .nav-links {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+   
+    <a href="{% url 'home' %}" class="logo">JobApp</a>
+
+    <div class="nav-links">
+      <a href="#">Jobs</a>
+      <a href="{% url 'about' %}">About</a>
+      <a href="{% url 'contact' %}">Contact</a>
+    </div>
+  </div>
+  <h2>Applications on Your Jobs</h2>
+
+<table border="1">
+  <tr>
+    <th>Applicant</th>
+    <th>Job Type</th>
+    <th>Job Title</th>
+    <th>Skills</th>
+    <th>Resume</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+  {% for app in applications %}
+  <tr>
+    <td>{{ app.full_name }}</td>
+    <td>{{ app.job_type }}</td>
+    <td>{{ app.job_title }}</td>
+    <td>{{ app.skills }}</td>
+    <td>
+      {% if app.resume_upload %}
+        <a href="{{ app.resume_upload.url }}" target="_blank">Download Resume</a>
+      {% else %}
+        Not uploaded
+      {% endif %}
+    </td>
+    <td>{{ app.status }}</td>
+    <td>
+      <a href="{% url 'update_status' app.id 'Selected' %}">Select</a> |
+      <a href="{% url 'update_status' app.id 'Rejected' %}">Reject</a>
+    </td>
+  </tr>
+  {% empty %}
+  <tr>
+    <td colspan="7">No applications yet.</td>
+  </tr>
+  {% endfor %}
+</table>

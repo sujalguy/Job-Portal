@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recruiter Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f4f6f9;
+    }
+    .navbar {
+      background-color: #333;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .navbar .logo {
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .navbar a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      display: block;
+    }
+    .navbar a:hover {
+      background-color: #575757;
+      border-radius: 5px;
+    }
+    .nav-links {
+      display: flex;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+    h2 {
+      color: #2e8b57;
+    }
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease-in-out;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h3 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .card a {
+      display: block;
+      margin: 10px 0;
+      text-decoration: none;
+      font-size: 16px;
+      color: #2e8b57;
+      font-weight: 500;
+    }
+    .card a:hover {
+      text-decoration: underline;
+    }
+    .side-gifs-right {
+    position: fixed;
+    top: 130px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* spacing between both gifs */
+    z-index: 0;
+  }
+  .side-gifs-right img {
+    width: 250px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    opacity: 0.95;
+  }
+  .container {
+    margin-right: 320px; 
+    transition: margin 0.3s ease-in-out;
+  }
+  @media (max-width: 992px) {
+    .side-gifs-right {
+      display: none;
+    }
+    .container {
+      margin-right: auto;
+    }
+  }
+
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <a href="{% url 'home' %}" class="logo">JobApp</a>
+    <div class="nav-links">
+      <a href="#">Jobs</a>
+      <a href="{% url 'about' %}">About</a>
+      <a href="{% url 'contact'%}">Contact</a>
+      
+    <a href=""><img src="{% static 'images/boy.png' %}" alt="Profile" style="width: 46px;"></a>
+      <a href="{% url 'logout' %}" style="color:#ff9800; font-weight:bold;">Logout</a>
+    </div>
+  </div>
+
+  
+
+ 
+  <div class="container">
+    <h2>Welcome, {{ request.user.username }} (Recruiter)</h2>
+    <p>Manage your job postings and applications here.</p>
+
+    <div class="dashboard-grid">
+      
+      
+      <div class="card">
+        <h3>📢 Post New Job</h3>
+        <a href="{% url 'create-it-jobs' %}">💻 Post IT Job</a>
+        <a href="{% url 'create-mech-jobs' %}">⚙️ Post Mechanical Job</a>
+        <a href="{% url 'create-civil-jobs' %}">🏗 Post Civil Job</a>
+      </div>
+
+      
+      <div class="card">
+        <h3>🗂 Manage Jobs</h3>
+        <a href="{% url 'manage-jobs' %}">📂 View & Manage Posted Jobs</a>
+      </div>
+
+      
+      <div class="card">
+        <h3>📩 Applications</h3>
+        <a href="{% url 'view_applications' %}">👀 View Applications</a>
+      </div>
+
+    </div>
+  </div>
+  <div class="side-gifs-right">
+    <img src="{% static 'images/clothingbrand.gif' %}" alt="Top Marketing GIF">
+    <img src="{% static 'images/shoesimage.gif' %}" alt="Bottom Marketing GIF">
+  </div>
+
+</body>
+</html>
+
+
+ 

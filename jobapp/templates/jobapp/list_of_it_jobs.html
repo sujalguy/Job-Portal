@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% load static%}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <div class="container">
+    <div class="jumbotron" style="text-align: center; background-color: transparent;">
+        <h1 class="display-4" style="color: black;"><b>List of IT jobs</b></h1>
+        <a class="btn btn-secondary"; href="/create-it-jobs/" role="button" type="submit">Add-It Jobs</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        </p><br>
+        <form action=" " method="POST"></form>
+    </div>
+
+        <style>
+          body{
+            background-image: url('');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+            backdrop-filter: blur(10px);
+
+          }
+        </style>
+        <div>
+        {% for x in data %}
+        
+        Company Name:{{x.Company_name}}
+        Title:{{x.Job_title}}
+        Location:{{x.Job_location}}
+        Experience:{{x.Experience}}
+        Salary:{{x.Salary}}
+        Description:{{x.Job_description}}
+
+        <a class="btn btn-success" href="/update-it/{{x.id}}/" role="button" type="submit">Update Jobs</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="btn btn-danger" href="/delete-it/{{x.id}}/" role="button" type="submit">Delete Jobs</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <hr>
+        {% endfor %}
+    </div>
+</div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

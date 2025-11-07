@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>AI Chatbot</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 30px; background: #f0f2f5; }
+        .chat-box { background: white; padding: 20px; border-radius: 10px; max-width: 600px; margin: auto; }
+        input[type="text"] { width: 80%; padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
+        button { padding: 10px 15px; border-radius: 5px; border: none; background: #007bff; color: white; cursor: pointer; }
+        .response { margin-top: 15px; background: #e9ecef; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="chat-box">
+        <h2>Ask anything:</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="question" placeholder="Type your question..." value="{{ user_input }}" required>
+            <button type="submit">Send</button>
+        </form>
+
+        {% if response %}
+            <div class="response"><strong>AI:</strong> {{ response }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>

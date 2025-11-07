@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list of civil jobs</title>
+</head>
+<body>
+    <div>
+        {% for x in data %}
+        
+        Company Name:{{x.Company_name}}
+        Title:{{x.Job_title}}
+        Location:{{x.Job_location}}
+        Experience:{{x.Experience}}
+        Salary:{{x.Salary}}
+        Description:{{x.Job_description}}
+        <a class="btn btn-success" href="/update-civil-jobs/{{x.id}}/" role="button" type="submit">Update Jobs</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="btn btn-danger" href="/delete-civil-jobs/{{x.id}}/" role="button" type="submit">Delete Jobs</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <hr>
+        {% endfor %}
+    </div>
+</div>
+    
+</body>
+</html>

@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Profile</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
+    }
+
+    .navbar {
+      background-color: #2c3e50;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .navbar .logo {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .navbar a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+
+    .navbar a:hover {
+      background-color: #34495e;
+      border-radius: 5px;
+    }
+
+  
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+
+    .profile-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .profile-header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid #3498db;
+      margin-bottom: 10px;
+    }
+
+    .profile-header h2 {
+      margin: 0;
+      color: #2c3e50;
+      font-size: 26px;
+    }
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    form p {
+      margin: 0;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #2c3e50;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      grid-column: span 2; /* full width */
+      resize: none;
+      height: 100px;
+    }
+    input[type="file"] {
+      padding: 5px;
+    }
+    .btn-container {
+      grid-column: span 2;
+      text-align: center;
+      margin-top: 20px;
+    }
+    button {
+      background: linear-gradient(135deg, #3498db, #2ecc71);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #2ecc71, #3498db);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+ 
+  <div class="navbar">
+    <a href="{% url 'home' %}" class="logo">JobApp</a>
+    <div class="nav-links">
+      <a href="#">Jobs</a>
+      <a href="{% url 'about' %}">About</a>
+      <a href="{% url 'contact' %}">Contact</a>
+    </div>
+  </div>
+
+ 
+  <div class="container">
+    <div class="profile-header">
+      {% if profile.image %}
+        <img src="{{ profile.image.url }}" alt="Profile Picture">
+      {% else %}
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Default Avatar">
+      {% endif %}
+      <h2>👤 Edit Profile</h2>
+    </div>
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="btn-container">
+        <button type="submit">💾 Save Changes</button>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>
+ 
+
+
